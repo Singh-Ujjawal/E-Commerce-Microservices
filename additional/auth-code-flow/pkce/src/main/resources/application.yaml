@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: pkce
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8443/realms/oauth2-demos

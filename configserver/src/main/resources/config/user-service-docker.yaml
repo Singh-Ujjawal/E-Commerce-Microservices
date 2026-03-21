@@ -1,0 +1,50 @@
+spring:
+  data:
+    mongodb:
+      uri: ${MONGO_URI}
+      database: Ecom-Microservices
+      auto-index-creation: true
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
+    virtual-host: ${RABBITMQ_VHOST:guest}
+    connection-timeout: 30000
+server:
+  port: 8082
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  tracing:
+    sampling:
+      probability: 1.0
+
+logging:
+  file:
+    name: logs/${spring.application.name}.log
+  logback:
+    rollingpolicy:
+      max-file-size: 5MB
+      max-history: 7
+
+
+#--------Keyclaok
+keycloak:
+  admin:
+    username: user
+    password: user
+    server-url: http://keycloak:8080
+    realm: ecom-app
+    client-id: admin-cli
+    client-uid: 5611cdd1-be11-44e1-9011-c3615b02b47f
